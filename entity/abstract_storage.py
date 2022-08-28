@@ -1,26 +1,18 @@
 from abc import ABC, abstractmethod
 
 
-class Storage(ABC):
+class AbstractStorage(ABC):
 
     @abstractmethod
-    def items(self):
+    def add(self, title: str, quantity: int) -> None:
         pass
 
     @abstractmethod
-    def capacity(self):
+    def remove(self, title: str, quantity: int) -> None:
         pass
 
     @abstractmethod
-    def add(self):
-        pass
-
-    @abstractmethod
-    def remove(self):
-        pass
-
-    @abstractmethod
-    def get_free_space(self):
+    def get_free_space(self) -> int:
         pass
 
     @abstractmethod

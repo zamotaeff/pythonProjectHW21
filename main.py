@@ -1,3 +1,4 @@
+from entity.courier import Courier
 from entity.request import Request
 from entity.shop import Shop
 from entity.store import Store
@@ -13,10 +14,14 @@ storages = {
 
 
 def main():
+
     print('\nДобро пожаловать.\n')
+
     while True:
-        print(f'Сейчас на складе:\n{store}')
-        print(f'Сейчас в магазине:\n{shop}')
+
+        for storage_name in storages:
+            print(f'Сейчас в {storage_name}:\n {storages[storage_name].get_items()}\n')
+
         user_input = input('Введите команду в формате "Доставить 1 собачка из склад в магазин"\n'
                            'Введите "стоп", если хотите закончить\n').lower()
 
@@ -26,10 +31,16 @@ def main():
 
         try:
             request = Request(user_input)
-            request.move()
         except InvalidRequest as error:
             print(f'Произошла ошибка: {error}')
             continue
+
+        courier = Courier(
+            request,
+            storages
+        )
+
+        courier.move()
 
 
 if __name__ == '__main__':
