@@ -31,3 +31,6 @@ class Courier:
         )
 
         print(f'Курьер Доставил {self.__request.quantity} {self.__request.title} в {self.__request.destination}')
+
+    def cancel(self):
+        pass

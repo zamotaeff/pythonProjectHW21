@@ -2,7 +2,7 @@ from entity.courier import Courier
 from entity.request import Request
 from entity.shop import Shop
 from entity.store import Store
-from exceptions import InvalidRequest
+from exceptions import InvalidRequest, ThereIsNoSuchWarehouse
 
 store = Store(items={"печенька": 25, "собачка": 25, "елка": 25})
 shop = Shop(items={"печенька": 2, "собачка": 2, "елка": 2})
@@ -40,7 +40,10 @@ def main():
             storages
         )
 
-        courier.move()
+        try:
+            courier.move()
+        except ThereIsNoSuchWarehouse as error:
+            courier.cancel()
 
 
 if __name__ == '__main__':
