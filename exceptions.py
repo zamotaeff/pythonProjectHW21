@@ -16,3 +16,7 @@ class NotEnoughProduct(BaseError):
 
 class TooManyDifferentProducts(BaseError):
     message = 'Слишком много разных товаров.'
+
+
+class ThereIsNoSuchWarehouse(BaseError):
+    message = 'Такого склада нет.'
